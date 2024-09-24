@@ -1,0 +1,7 @@
+# Generated services-manifest.yml based on template version 0.1.0
+# appName = hello-cloud-foundry
+---
+create-services:
+  - name: hello-cloud-foundry-auth
+    broker: xsuaa
+    plan: application

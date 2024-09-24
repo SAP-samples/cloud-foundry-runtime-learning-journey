@@ -1,0 +1,13 @@
+# Generated manifest.yml based on template version 0.1.0
+# appName = hello-cloud-foundry
+# language=nodejs
+# multitenancy=
+---
+applications:
+# -----------------------------------------------------------------------------------
+# Backend Service
+# -----------------------------------------------------------------------------------
+- name: hello-cloud-foundry-srv
+  path: gen/srv
+  memory: 256M
+  buildpack: nodejs_buildpack
