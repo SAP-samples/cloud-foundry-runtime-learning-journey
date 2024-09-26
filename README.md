@@ -87,7 +87,7 @@ This will create a `mta.tar` file in the `gen` folder. This file contains the de
 Use the following command to deploy the application to Cloud Foundry:
 
 ```bash
-cf deploy mta_archives/mta.tar
+cf deploy gen/mta.tar
 ```
 
 Wait until the process is finished. You can check the status of the deployment in the terminal. Once the deployment is finished, you should see something like this:
