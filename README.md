@@ -1,4 +1,5 @@
 # Getting Started
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-foundry-runtime-learning-journey)](https://api.reuse.software/info/github.com/SAP-samples/cloud-foundry-runtime-learning-journey)
 
 Welcome to your new project.
 
@@ -27,54 +28,93 @@ First, the Cloud-Foundry-native deployment using `cf-push` is shown. Then the MT
 
 #### Prerequisites
 
-Install the Create-Service-Push plugin:
+- You have access to an SAP BTP, Cloud Foundry environment and have the necessary permissions to deploy applications into a Cloud Foundry space.
+- You have installed the following tools:
+  -  [git CLI](https://git-scm.com/downloads)
+  -  [cds CLI](https://cap.cloud.sap/docs/tools/cds-cli)
+  -  [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/)
+  -  [Cloud MTA Build Tool (MBT)](https://sap.github.io/cloud-mta-build-tool/)
 
-```sh
-cf install-plugin Create-Service-Push
+
+### Task 1: Clone the sample application
+
+1. Clone the sample application from the GitHub repository.
+
+Clone the sample application from the GitHub repository using the following command:
+
+```bash
+git clone https://github.com/SAP-samples/cloud-foundry-runtime-learning-journey
 ```
 
-#### Build the project
+2. Open the cloned project in your preferred IDE.
+
+### Task 2: Deploy the application using native Cloud Foundry deployment
+
+1. Build the project
 
 This reference applications already comes with all neccessary files for the deployment. However, you have to build the application for production first:
 
-```sh
+```bash
 cds build --production
 ```
 
-The `--production` parameter ensures that the cloud deployment-related artifacts are created by `cds build`.
+The `--production` parameter ensures that the cloud deployment-related artifacts are created by cds build.
 
-#### Push the application
+2. Login to your Cloud Foundry instance and target an organization and space
 
-Then push the application to the SAP BTP. This will also ensure to bind the services to the application with a single call:
+Use the following command to login to your Cloud Foundry instance:
 
-```sh
-cf create-service-push
+```bash
+cf login
 ```
 
-Read more about the deployment via `cf-push` in the official [CAP documentation](https://cap.cloud.sap/docs/guides/deployment/to-cf#deploy-using-cf-push).
+Provide the API endpoint, which you can find in the SAP BTP cockpit, and your credentials. Once authenticated, target an organization and space by choosing the respective values from the list. 
 
-### MTA-based deployment
+Alternatively, you can also use the following command to target an organization and space:
 
-#### Build the project
+```bash
+cf target -o <organization> -s <space>
+```
 
+4. Push the application to Cloud Foundry
+
+Use the following command to deploy the application to Cloud Foundry:
+
+```bash
+cf push
+```
+
+Read more about the deployment via cf-push in the official [[CAP documentation](https://cap.cloud.sap/docs/guides/deployment/to-cf#deploy-using-cf-push)].
+
+4. Access the application
+
+In your Terminal, you will see the URL of the deployed application. Open the URL in your browser to access the application.
+Alternatively, you can also navigate into your application that is now deployed inside your Cloud Foundry space on the SAP BTP cockpit and access the application from there.
+
+### Task 2: Deploy the application using Multi-Target Application (MTA) deployment
+
+1. Build the project
 This reference applications already comes with all neccessary files for the deployment. However, you have to build the application for production first:
 
-```sh
+```bash
 mbt build -t gen --mtar mta.tar
 ```
 
-#### Deploy the application
+This will create a `mta.tar` file in the `gen` folder. This file contains the deployment artifacts for the MTA deployment.
 
-```sh
-cf deploy gen/mta.tar
+2. Deploy the application
+
+Use the following command to deploy the application to Cloud Foundry:
+
+```bash
+cf deploy mta_archives/mta.tar
 ```
 
-This process can take some minutes and finally creates a log output like this:
+Wait until the process is finished. You can check the status of the deployment in the terminal. Once the deployment is finished, you should see something like this:
 
-[…]
-Application "bookshop" started and available at
-"[org]-[space]-bookshop.landscape-domain.com"
-[…]
+```bash
+[…] Application "hello-cloud-foundry-srv" started and available at "[org]-[space]-hello-cloud-foundry-srv.landscape-domain.com" […]
+```
 
 ## Learn More
 
