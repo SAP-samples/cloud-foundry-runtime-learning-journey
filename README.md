@@ -1,30 +1,10 @@
 # Getting Started
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-foundry-runtime-learning-journey)](https://api.reuse.software/info/github.com/SAP-samples/cloud-foundry-runtime-learning-journey)
 
-Welcome to your new project.
-
-It contains these folders and files, following our recommended project layout:
-
-| File or Folder | Purpose                              |
-| -------------- | ------------------------------------ |
-| `app/`         | content for UI frontends goes here   |
-| `db/`          | your domain models and data go here  |
-| `srv/`         | your service models and code go here |
-| `package.json` | project metadata and configuration   |
-| `readme.md`    | this getting started guide           |
-
-## Next Steps
-
-- Open a new terminal and run `cds watch`
-- (in VS Code simply choose _**Terminal** > Run Task > cds watch_)
-- Start adding content, for example, a [db/schema.cds](db/schema.cds).
-
-## Deployment
+## How to install
 
 This section explains how to deploy the application to your SAP BTP subaccount.
 First, the Cloud-Foundry-native deployment using `cf-push` is shown. Then the MTA-based deployment is explained. Please ensure to log on to the Cloud Foundry environment using the Cloud Foundry CLI using [this guide](https://help.sap.com/docs/btp/sap-business-technology-platform/log-on-to-cloud-foundry-environment-using-cloud-foundry-command-line-interface).
-
-### CF-native deployment
 
 #### Prerequisites
 
