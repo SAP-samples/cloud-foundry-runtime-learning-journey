@@ -16,8 +16,6 @@ modules:
     path: gen/srv
     parameters:
       buildpack: nodejs_buildpack
-      readiness-health-check-type: http
-      readiness-health-check-http-endpoint: /health
     build-parameters:
       builder: npm
     provides:
