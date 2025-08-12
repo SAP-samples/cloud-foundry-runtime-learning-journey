@@ -20,5 +20,10 @@
   },
   "scripts": {
     "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": "mocked"
+    }
   }
 }
