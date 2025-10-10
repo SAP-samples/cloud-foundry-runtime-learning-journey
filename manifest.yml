@@ -12,3 +12,5 @@ applications:
   memory: 256M
   buildpack: nodejs_buildpack
   random-route: true
+  services:
+    - hello-cloud-foundry-auth
