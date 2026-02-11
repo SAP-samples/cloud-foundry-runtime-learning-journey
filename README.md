@@ -73,7 +73,14 @@ Alternatively, you can also navigate into your application that is now deployed 
 
 ### Task 2: Deploy the application using Multi-Target Application (MTA) deployment
 
-1. Build the project
+1. Prepare dependencies
+Before building the project, ensure that all Node.js dependencies are resolved and a lock-file is generated. The MTA build tool requires package-lock.json to perform a clean install during the build process.
+
+```bash
+npm install
+```
+
+2. Build the project
 This reference applications already comes with all neccessary files for the deployment. However, you have to build the application for production first:
 
 ```bash
@@ -82,7 +89,7 @@ mbt build -t gen --mtar mta.tar
 
 This will create a `mta.tar` file in the `gen` folder. This file contains the deployment artifacts for the MTA deployment.
 
-2. Deploy the application
+3. Deploy the application
 
 Use the following command to deploy the application to Cloud Foundry:
 
