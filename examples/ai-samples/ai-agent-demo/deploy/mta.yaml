@@ -1,0 +1,70 @@
+_schema-version: "3.1"
+ID: ai-agent-demo
+description: AI Agent with SAP AI Core Service, XSUAA Authentication
+version: 1.0.0
+
+modules:
+  # App Router - Handles authentication
+  - name: approuter
+    type: nodejs
+    path: approuter
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+      routes:
+        - route: ai-agent-demo.cfapps.eu12.hana.ondemand.com # Update route https://ai-agent-demo.cfapps.<YOUR-REGION>.hana.ondemand.com
+    requires:
+      - name: ai-agent-demo-xsuaa
+      - name: tools-chat-backend
+        group: destinations
+        properties:
+          name: tools-chat-backend
+          url: ~{url}
+          forwardAuthToken: true
+
+  # Backend application (with XSUAA authentication)
+  - name: ai-agent-demo
+    type: python
+    path: .. # root of the project
+    build-parameters:
+      ignore:
+        - .venv/
+        - venv/
+        - env/
+        - .git/
+        - deploy/
+        - __pycache__/
+        - "*.pyc"
+        - .DS_Store
+        - .gitignore
+        - Makefile
+        - uv.lock
+        - "*.egg-info/"
+    parameters:
+      memory: 768M
+      disk-quota: 1024M
+      buildpack: python_buildpack
+    properties:
+      PYTHONUNBUFFERED: "1"
+    provides:
+      - name: tools-chat-backend
+        properties:
+          url: ${default-url}
+    requires:
+      - name: aicore
+      - name: ai-agent-demo-xsuaa
+
+resources:
+  # SAP AI Core Service Instance
+  - name: aicore
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: default_aicore  # Replace with your AI Core service instance name
+
+  # XSUAA Service Instance for Authentication
+  - name: ai-agent-demo-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
