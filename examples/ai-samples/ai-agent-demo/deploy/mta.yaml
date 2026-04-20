@@ -46,6 +46,7 @@ modules:
       buildpack: python_buildpack
     properties:
       PYTHONUNBUFFERED: "1"
+      AICORE_RESOURCE_GROUP: "default" # Replace with your AI Core resource group if different
     provides:
       - name: tools-chat-backend
         properties:
