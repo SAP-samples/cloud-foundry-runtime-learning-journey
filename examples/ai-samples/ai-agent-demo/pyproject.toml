@@ -1,0 +1,43 @@
+[project]
+name = "ai-agent-demo"
+version = "1.0.0"
+description = "AI Agent with SAP AI Core Service, XSUAA Authentication"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mesop>=0.10.0",
+    "sap-ai-sdk-gen>=5.8.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.11.4,<3.0.0",
+    "ddgs>=0.1.0",
+    "Wikipedia-API>=0.7.1",
+    "gunicorn>=21.2.0",
+    "sap-xssec>=4.2.2",
+    "cfenv>=0.5.3"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tools"]
+
+[tool.uv]
+dev-dependencies = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]

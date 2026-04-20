@@ -96,6 +96,10 @@ Wait until the process is finished. You can check the status of the deployment i
 […] Application "hello-cloud-foundry-srv" started and available at "[org]-[space]-hello-cloud-foundry-srv.landscape-domain.com" […]
 ```
 
+## Examples
+
+For additional examples and sample applications, check out the [examples](examples/) folder.
+
 ## Learn More
 
 - [Getting Started with CAP](https://cap.cloud.sap/docs/get-started/)
