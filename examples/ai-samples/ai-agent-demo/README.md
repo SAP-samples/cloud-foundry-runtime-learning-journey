@@ -102,7 +102,7 @@ uv pip compile pyproject.toml -o requirements.txt
 
 **Steps to configure**
 
-1. **Determine your region and route**:
+1. **Determine your region and route**
    ```bash
    # Check your CF API endpoint to identify your region
    cf api
@@ -111,7 +111,7 @@ uv pip compile pyproject.toml -o requirements.txt
    # https://api.cf.us10.hana.ondemand.com (US - East)
    ```
 
-2. **Update `xs-security.json`** with your specific route:
+2. **Update `xs-security.json`** with your specific route
 
    Edit `deploy/xs-security.json`:
 
@@ -121,7 +121,7 @@ uv pip compile pyproject.toml -o requirements.txt
    ]
    ```
 
-   **Region examples**:
+   **Region examples**
    - EU (Frankfurt): `eu12`
    - US (East): `us10`
    - Asia Pacific (Singapore): `ap21`
